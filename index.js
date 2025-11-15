@@ -1,4 +1,4 @@
-let finalData = []
+import { API_TOKEN } from './config.js'
 
 function mapPoints(data) {
   let coordArray = []
@@ -10,7 +10,6 @@ function mapPoints(data) {
   return coordArray
 }
 
-
 let jsonOutput = $.ajax({
     url: "https://data.cityofnewyork.us/api/v3/views/wz6d-d3jb/query.json",
       type: "POST",
@@ -18,7 +17,7 @@ let jsonOutput = $.ajax({
       async: false,
       headers: {
         "Content-Type": "application/json",
-        'X-App-Token': "imTiX8jDpkId1dWdHQKnluIee"
+        'X-App-Token': `${API_TOKEN}`
       },
       data: JSON.stringify({
         query: "SELECT *",
