@@ -32,4 +32,6 @@ let jsonOutput = $.ajax({
   }).responseText
 
 let jsonParsed = JSON.parse(jsonOutput)
-console.log(mapPoints(jsonParsed))
+
+export let coordinates = mapPoints(jsonParsed)
+console.log(coordinates)
