@@ -1,26 +1,36 @@
-let destring
-let coordArray = []
+let finalData = []
 
-$.ajax({
-  url: "https://data.cityofnewyork.us/api/v3/views/wz6d-d3jb/query.json",
-  type: "POST",
-  dataType: "text",
-  headers: {
-    "Content-Type": "application/json",
-    'X-App-Token': "imTiX8jDpkId1dWdHQKnluIee"
-  },
-  data: JSON.stringify({
-    query: "SELECT *",
-    page: {
-      pageNumber: 1,
-      pageSize: 5000,
-    },
-    includeSynthetic: false,
-  }),
-}).done(function (data) {
-    destring = JSON.parse(data)
-    //const bronx = destring[0]['borough']
-    //console.log()
-  //alert("Retrieved " + data.length + " records from the dataset!");
-  //console.log(data);
-});
+function mapPoints(data) {
+  let coordArray = []
+  for (let i = 101; i <= 200; i++) {
+    let arr = []
+    arr.push(parseFloat(data[i]["latitude"]), parseFloat(data[i]["longitude"]))
+    coordArray.push(arr)
+  }
+  return coordArray
+}
+
+
+let jsonOutput = $.ajax({
+    url: "https://data.cityofnewyork.us/api/v3/views/wz6d-d3jb/query.json",
+      type: "POST",
+      dataType: "text",
+      async: false,
+      headers: {
+        "Content-Type": "application/json",
+        'X-App-Token': "imTiX8jDpkId1dWdHQKnluIee"
+      },
+      data: JSON.stringify({
+        query: "SELECT *",
+        page: {
+          pageNumber: 1,
+          pageSize: 5000,
+        },
+        includeSynthetic: false,
+      }),
+    }).done(function(data) {
+        //JSON.parse(data)
+  }).responseText
+
+let jsonParsed = JSON.parse(jsonOutput)
+console.log(mapPoints(jsonParsed))
