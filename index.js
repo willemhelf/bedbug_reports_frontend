@@ -2,9 +2,9 @@ import { API_TOKEN } from './config.js'
 
 function mapPoints(data) {
   let coordArray = []
-  for (let i = 101; i <= 200; i++) {
+  for (let i = 101; i <= 4500; i++) {
     let arr = []
-    arr.push(parseFloat(data[i]["latitude"]), parseFloat(data[i]["longitude"]))
+    arr.push(data[i]["borough"], parseFloat(data[i]["latitude"]), parseFloat(data[i]["longitude"]))
     coordArray.push(arr)
   }
   return coordArray
@@ -20,10 +20,10 @@ let jsonOutput = $.ajax({
         'X-App-Token': `${API_TOKEN}`
       },
       data: JSON.stringify({
-        query: "SELECT *",
+        query: "SELECT *", 
         page: {
           pageNumber: 1,
-          pageSize: 5000,
+          pageSize: 5000, // can make this any size but affects load time majorly
         },
         includeSynthetic: false,
       }),
@@ -34,4 +34,11 @@ let jsonOutput = $.ajax({
 let jsonParsed = JSON.parse(jsonOutput)
 
 export let coordinates = mapPoints(jsonParsed)
-console.log(coordinates)
+export let bronx = coordinates.filter(inner => inner[0] == "BRONX")
+export let queens = coordinates.filter(inner => inner[0] == "QUEENS")
+export let statenIsland = coordinates.filter(inner => inner[0] == "STATEN ISLAND")
+export let manhattan = coordinates.filter(inner => inner[0] == "MANHATTAN")
+export let brooklyn = coordinates.filter(inner => inner[0] == "BROOKLYN")
+
+//console.log(brooklyn)
+//console.log(bronx2(coordinates))
