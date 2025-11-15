@@ -1,6 +1,5 @@
 let destring
-
-
+let coordArray = []
 
 $.ajax({
   url: "https://data.cityofnewyork.us/api/v3/views/wz6d-d3jb/query.json",
@@ -21,10 +20,7 @@ $.ajax({
 }).done(function (data) {
     destring = JSON.parse(data)
     //const bronx = destring[0]['borough']
-    console.log()
+    //console.log()
   //alert("Retrieved " + data.length + " records from the dataset!");
   //console.log(data);
 });
-
-
-// console.log(bronx)
