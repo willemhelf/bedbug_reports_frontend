@@ -1,6 +1,44 @@
-//import { coordinates, bronx, queens, statenIsland, manhattan, brooklyn } from './index.js'
+// //import { zips } from './index.js'
 
- 
+// function colorPick(d) {
+//      return d.length > 2000 ? '#800026' :
+//            d.length > 15000  ? '#BD0026' :
+//            d.length > 1000  ? '#E31A1C' :
+//            d.length > 500  ? '#FC4E2A' :
+//            d.length > 300   ? '#FD8D3C' :
+//            d.length > 100   ? '#FEB24C' :
+//            d.length > 50   ? '#FED976' :
+//                       '#FFEDA0';
+// }
+
+// function getZip(arr) {
+//     arr.forEach(element => {
+//         colorPick(element)
+//     });
+// }
+
+// let mapStyle = function style(zip) {
+//     return {
+//         fillColor: colorPick(zip),
+//         weight: 2,
+//         opacity: 1,
+//         color: 'white',
+//         dashArray: '3',
+//         fillOpacity: 0.7
+//     };
+// }
+
+
+
+// var map = L.map('map').setView([40.7306, -73.9352], 13)
+
+// L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//     maxZoom: 19,
+//     style: mapStyle(zips),
+//     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+// }).addTo(map);
+
+// L.geoJson({style: mapStyle}).addTo(map);
 
 
 // let marker

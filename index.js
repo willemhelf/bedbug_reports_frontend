@@ -42,10 +42,11 @@ let jsonOutput = $.ajax({
     }).done(function(data) {
   }).responseText
 
-let jsonParsed = JSON.parse(jsonOutput)
+export let jsonParsed = JSON.parse(jsonOutput)
+console.log(jsonParsed)
 
-let zips = zipcodes(jsonParsed)
-console.log(zips)
+//export let zips = zipcodes(jsonParsed)
+//console.log(zips)
 // export let bronx = coordinates.filter(inner => inner[0] == "BRONX")
 // export let queens = coordinates.filter(inner => inner[0] == "QUEENS")
 // export let statenIsland = coordinates.filter(inner => inner[0] == "STATEN ISLAND")
